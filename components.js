@@ -16,10 +16,12 @@ async function preloadPage(url) {
     }
 }
 
-// Function to load HTML components
+// Function to load HTML components with cache busting for GitHub Pages
 async function loadComponent(elementId, filePath) {
     try {
-        const response = await fetch(filePath);
+        // Add timestamp to force refresh on GitHub Pages
+        const cacheBuster = new Date().getTime();
+        const response = await fetch(`${filePath}?v=${cacheBuster}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }

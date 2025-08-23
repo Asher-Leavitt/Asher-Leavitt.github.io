@@ -8,19 +8,22 @@ function loadProjects(type) {
     const projects = projectsData[type] || [];
     
     projects.forEach(project => {
-        const projectCard = document.createElement('div');
+        const projectCard = document.createElement('a');
+        projectCard.href = `project-detail.html?id=${project.id}&type=${type}`;
         projectCard.className = 'project-card';
         projectCard.innerHTML = `
-            <h3>${project.title}</h3>
-            <div class="project-image-container">
-                <img src="${project.thumbnail}" alt="${project.title}">
-                <div class="project-overlay">
-                    <p class="project-description">${project.shortDescription}</p>
-                    <div class="project-tags">
-                        ${project.skills.slice(0, 4).map(skill => `<span>${skill}</span>`).join('')}
-                    </div>
-                    <a href="project-detail.html?id=${project.id}&type=${type}" class="view-project-btn">View Project →</a>
+            <div class="project-card-content">
+                <h3>${project.title}</h3>
+                <div class="project-image-container">
+                    <img src="${project.thumbnail}" alt="${project.title}">
                 </div>
+            </div>
+            <div class="project-overlay">
+                <p class="project-description">${project.shortDescription}</p>
+                <div class="project-tags">
+                    ${project.skills.slice(0, 4).map(skill => `<span>${skill}</span>`).join('')}
+                </div>
+                <div class="view-project-btn">View Project →</div>
             </div>
         `;
         container.appendChild(projectCard);
@@ -37,19 +40,22 @@ function loadFeaturedProjects() {
     const featured = projectsData.professional.slice(0, 3);
     
     featured.forEach(project => {
-        const projectCard = document.createElement('div');
+        const projectCard = document.createElement('a');
+        projectCard.href = `project-detail.html?id=${project.id}&type=professional`;
         projectCard.className = 'project-card';
         projectCard.innerHTML = `
-            <h3>${project.title}</h3>
-            <div class="project-image-container">
-                <img src="${project.thumbnail}" alt="${project.title}">
-                <div class="project-overlay">
-                    <p class="project-description">${project.shortDescription}</p>
-                    <div class="project-tags">
-                        ${project.skills.slice(0, 3).map(skill => `<span>${skill}</span>`).join('')}
-                    </div>
-                    <a href="project-detail.html?id=${project.id}&type=professional" class="view-project-btn">View Project →</a>
+            <div class="project-card-content">
+                <h3>${project.title}</h3>
+                <div class="project-image-container">
+                    <img src="${project.thumbnail}" alt="${project.title}">
                 </div>
+            </div>
+            <div class="project-overlay">
+                <p class="project-description">${project.shortDescription}</p>
+                <div class="project-tags">
+                    ${project.skills.slice(0, 3).map(skill => `<span>${skill}</span>`).join('')}
+                </div>
+                <div class="view-project-btn">View Project →</div>
             </div>
         `;
         container.appendChild(projectCard);
