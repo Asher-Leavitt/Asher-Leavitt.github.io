@@ -27,33 +27,6 @@ body {
     position: relative;
 }
 
-/* Background decoration elements */
-body::before {
-    content: "";
-    position: fixed;
-    background-color: rgba(255, 130, 77, 0.15);
-    border-radius: 50%;
-    width: 20rem;
-    height: 20rem;
-    top: -5%;
-    right: -5%;
-    z-index: -1;
-    filter: blur(100px);
-}
-
-body::after {
-    content: "";
-    position: fixed;
-    background-color: rgba(255, 199, 177, 0.1);
-    border-radius: 50%;
-    width: 25rem;
-    height: 25rem;
-    bottom: -10%;
-    left: -10%;
-    z-index: -1;
-    filter: blur(120px);
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -139,7 +112,7 @@ header {
     padding: 0 0.5rem;
 }
 
-/* Social Icons */
+/* Social Icons - Orange Theme */
 .social-icon-link {
     display: flex;
     align-items: center;
@@ -149,67 +122,66 @@ header {
 .social-icon {
     width: 24px;
     height: 24px;
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.social-icon.linkedin {
-    color: #0077B5;
-}
-
-.social-icon.instagram {
-    color: #E4405F;
-}
-
-.social-icon.discord {
-    color: #5865F2;
+    color: var(--primary);
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .social-icon:hover {
     transform: scale(1.2);
-    filter: brightness(1.3);
+    opacity: 0.8;
 }
 
 .play-only-social {
     display: none;
 }
 
-/* Hero Section */
+/* Hero Section with Profile Image */
 .hero {
-    padding: 100px 0;
-    text-align: center;
+    padding: 80px 0 40px;
     position: relative;
+}
+
+.hero-content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary);
+    box-shadow: 0 5px 20px rgba(255, 130, 77, 0.3);
+}
+
+.hero-content {
+    flex: 1;
+    text-align: right;
 }
 
 .hero-content h2 {
     font-size: 3rem;
     margin-bottom: 1rem;
     color: var(--accent);
-    text-align: right;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 20px;
-}
-
-.hero-content::after {
-    content: '';
-    display: block;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
-    margin-top: 2rem;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .hero-content p {
     font-size: 1.25rem;
     color: var(--text);
-    text-align: right;
+}
+
+.hero-bar {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
+    margin-top: 3rem;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 20px;
 }
 
 /* Page Header */
@@ -282,31 +254,6 @@ header {
     border-radius: 0.7rem;
     transition: all ease 0.3s;
     overflow: hidden;
-}
-
-/* Shimmer effect elements */
-.project-card::before {
-    content: "";
-    position: absolute;
-    background-color: rgba(255, 130, 77, 0.15);
-    border-radius: 50%;
-    width: 6rem;
-    height: 6rem;
-    top: 20%;
-    right: -2rem;
-    filter: blur(40px);
-}
-
-.project-card::after {
-    content: "";
-    position: absolute;
-    background-color: rgba(255, 199, 177, 0.1);
-    width: 4rem;
-    height: 4rem;
-    top: 60%;
-    left: -2rem;
-    border-radius: 50%;
-    filter: blur(30px);
 }
 
 .project-card:hover {
@@ -417,24 +364,13 @@ footer {
 .footer-social-icon {
     width: 24px;
     height: 24px;
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.footer-social-icon.linkedin {
-    color: #0077B5;
-}
-
-.footer-social-icon.instagram {
-    color: #E4405F;
-}
-
-.footer-social-icon.discord {
-    color: #5865F2;
+    color: var(--primary);
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .footer-social-icon:hover {
     transform: scale(1.2);
-    filter: brightness(1.3);
+    opacity: 0.8;
 }
 
 .resume-link {
@@ -462,22 +398,6 @@ footer {
     opacity: 0.7;
 }
 
-/* Smooth page transitions */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-main, section {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {
@@ -494,8 +414,21 @@ main, section {
         display: none;
     }
     
+    .hero-content-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .hero-content {
+        text-align: center;
+    }
+    
     .hero-content h2,
-    .hero-content p,
     .page-header h2,
     .page-header p {
         text-align: center;

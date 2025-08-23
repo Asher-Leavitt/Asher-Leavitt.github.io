@@ -1,8 +1,20 @@
-// components.js - Loads shared header and footer components with smooth transitions
+// components.js - Loads shared header and footer components with seamless transitions
 
-// Add fade-in animation to body on page load
-document.body.style.opacity = '0';
-document.body.style.transition = 'opacity 0.3s ease-in-out';
+// Preload next page for seamless transitions
+let preloadedPages = {};
+
+// Function to preload a page
+async function preloadPage(url) {
+    if (!preloadedPages[url]) {
+        try {
+            const response = await fetch(url);
+            const html = await response.text();
+            preloadedPages[url] = html;
+        } catch (error) {
+            console.error(`Error preloading ${url}:`, error);
+        }
+    }
+}
 
 // Function to load HTML components
 async function loadComponent(elementId, filePath) {
@@ -43,26 +55,17 @@ function setActiveNav() {
         } else {
             playOnlySocials.forEach(el => el.style.display = 'none');
         }
-    }, 100);
+    }, 50);
 }
 
-// Add smooth page transition
-function addPageTransition() {
-    document.querySelectorAll('a').forEach(link => {
-        // Only add transition to internal links
-        if (link.href && !link.href.includes('#') && !link.target && link.href.includes('.html')) {
-            link.addEventListener('click', function(e) {
-                const href = this.href;
-                // Check if it's an internal link
-                if (href.includes(window.location.origin)) {
-                    e.preventDefault();
-                    document.body.style.opacity = '0';
-                    setTimeout(() => {
-                        window.location.href = href;
-                    }, 300);
-                }
-            });
-        }
+// Preload pages on hover for instant navigation
+function setupPreloading() {
+    document.querySelectorAll('a[href$=".html"]').forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            if (link.href.includes(window.location.origin)) {
+                preloadPage(link.href);
+            }
+        });
     });
 }
 
@@ -77,10 +80,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Set active navigation item and handle conditional social links
     setActiveNav();
     
-    // Add page transitions after components are loaded
+    // Setup preloading after components are loaded
     setTimeout(() => {
-        addPageTransition();
-        // Fade in the page
-        document.body.style.opacity = '1';
-    }, 200);
+        setupPreloading();
+    }, 100);
+    
+    // Preload common pages
+    const pages = ['index.html', 'projects.html', 'play.html'];
+    pages.forEach(page => {
+        if (!window.location.pathname.endsWith(page)) {
+            preloadPage(page);
+        }
+    });
 });
