@@ -13,7 +13,7 @@
     <!-- Hero Section with Profile Image -->
     <section class="hero">
         <div class="hero-content-wrapper">
-            <img src="https://via.placeholder.com/200x200/ff824d/2D3142?text=Profile" alt="Your Name" class="profile-image">
+            <img src="https://placehold.co/200x200" alt="Your Name" class="profile-image">
             <div class="hero-content">
                 <h2>Welcome to My Portfolio</h2>
                 <p>Mechanical Engineer | CAD Specialist | Design Innovation</p>
@@ -29,77 +29,8 @@
     <section class="featured-projects">
         <div class="container">
             <h2>Featured Engineering Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/400x250/4A90E2/ffffff?text=Turbine+Design" alt="Turbine Optimization">
-                    <h3>Turbine Blade Optimization</h3>
-                    <p>Designed and optimized turbine blade geometry using CFD analysis, achieving 15% efficiency improvement and reduced material stress through innovative cooling channel design.</p>
-                    <div class="project-tags">
-                        <span>ANSYS Fluent</span>
-                        <span>SolidWorks</span>
-                        <span>FEA Analysis</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/400x250/7B68EE/ffffff?text=Robotic+Arm" alt="Robotic Arm Design">
-                    <h3>6-DOF Robotic Arm</h3>
-                    <p>Developed a six-degree-of-freedom robotic arm for precision manufacturing, including kinematic modeling, servo control system, and custom end-effector design.</p>
-                    <div class="project-tags">
-                        <span>MATLAB</span>
-                        <span>Fusion 360</span>
-                        <span>Arduino</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/400x250/6495ED/ffffff?text=Heat+Exchanger" alt="Heat Exchanger">
-                    <h3>Compact Heat Exchanger</h3>
-                    <p>Engineered a high-efficiency compact heat exchanger for automotive applications, reducing size by 30% while maintaining thermal performance through advanced fin design.</p>
-                    <div class="project-tags">
-                        <span>COMSOL</span>
-                        <span>CATIA V5</span>
-                        <span>Thermal Analysis</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills-section">
-        <div class="container">
-            <h2>Technical Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>CAD Software</h3>
-                    <div class="skill-items">
-                        <span>SolidWorks</span>
-                        <span>CATIA V5</span>
-                        <span>Fusion 360</span>
-                        <span>AutoCAD</span>
-                        <span>Creo Parametric</span>
-                        <span>NX Siemens</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Analysis Tools</h3>
-                    <div class="skill-items">
-                        <span>ANSYS Workbench</span>
-                        <span>COMSOL Multiphysics</span>
-                        <span>MATLAB/Simulink</span>
-                        <span>Abaqus</span>
-                        <span>CFD Fluent</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Manufacturing</h3>
-                    <div class="skill-items">
-                        <span>GD&T</span>
-                        <span>DFM/DFA</span>
-                        <span>3D Printing</span>
-                        <span>CNC Programming</span>
-                        <span>Injection Molding</span>
-                    </div>
-                </div>
+            <div class="projects-grid" id="featured-projects-container">
+                <!-- Projects will be loaded dynamically from projects-data.js -->
             </div>
         </div>
     </section>
@@ -107,7 +38,9 @@
     <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
-    <!-- Load shared components -->
+    <!-- Load shared components and project data -->
+    <script src="projects-data.js"></script>
     <script src="components.js"></script>
+    <script src="projects-loader.js"></script>
 </body>
 </html>

@@ -30,7 +30,7 @@ async function loadComponent(elementId, filePath) {
     }
 }
 
-// Function to set active navigation item and handle play-only social links with animation
+// Function to set active navigation item and handle personal-only social links with animation
 function setActiveNav() {
     // Get current page filename
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -49,15 +49,15 @@ function setActiveNav() {
         }
         
         // Animate Instagram and Discord icons based on page
-        const playOnlySocials = document.querySelectorAll('.play-only-social');
-        if (currentPage === 'play.html') {
-            playOnlySocials.forEach(el => {
+        const personalOnlySocials = document.querySelectorAll('.personal-only-social');
+        if (currentPage === 'personal.html') {
+            personalOnlySocials.forEach(el => {
                 el.style.display = 'block';
                 el.classList.add('social-animate-in');
                 setTimeout(() => el.classList.remove('social-animate-in'), 600);
             });
         } else {
-            playOnlySocials.forEach(el => {
+            personalOnlySocials.forEach(el => {
                 if (el.style.display === 'block') {
                     el.classList.add('social-animate-out');
                     setTimeout(() => {
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }, 100);
     
     // Preload common pages
-    const pages = ['index.html', 'projects.html', 'play.html'];
+    const pages = ['index.html', 'professional.html', 'personal.html'];
     pages.forEach(page => {
         if (!window.location.pathname.endsWith(page)) {
             preloadPage(page);
