@@ -1,4 +1,8 @@
-// components.js - Loads shared header and footer components
+// components.js - Loads shared header and footer components with smooth transitions
+
+// Add fade-in animation to body on page load
+document.body.style.opacity = '0';
+document.body.style.transition = 'opacity 0.3s ease-in-out';
 
 // Function to load HTML components
 async function loadComponent(elementId, filePath) {
@@ -42,6 +46,26 @@ function setActiveNav() {
     }, 100);
 }
 
+// Add smooth page transition
+function addPageTransition() {
+    document.querySelectorAll('a').forEach(link => {
+        // Only add transition to internal links
+        if (link.href && !link.href.includes('#') && !link.target && link.href.includes('.html')) {
+            link.addEventListener('click', function(e) {
+                const href = this.href;
+                // Check if it's an internal link
+                if (href.includes(window.location.origin)) {
+                    e.preventDefault();
+                    document.body.style.opacity = '0';
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 300);
+                }
+            });
+        }
+    });
+}
+
 // Load components when DOM is ready
 document.addEventListener('DOMContentLoaded', async () => {
     // Load header and footer
@@ -52,4 +76,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Set active navigation item and handle conditional social links
     setActiveNav();
+    
+    // Add page transitions after components are loaded
+    setTimeout(() => {
+        addPageTransition();
+        // Fade in the page
+        document.body.style.opacity = '1';
+    }, 200);
 });
