@@ -30,7 +30,7 @@ async function loadComponent(elementId, filePath) {
     }
 }
 
-// Function to set active navigation item and handle play-only social links
+// Function to set active navigation item and handle play-only social links with animation
 function setActiveNav() {
     // Get current page filename
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -48,12 +48,26 @@ function setActiveNav() {
             activeLink.classList.add('active');
         }
         
-        // Show/hide Instagram and Discord based on whether we're on the Play page
+        // Animate Instagram and Discord icons based on page
         const playOnlySocials = document.querySelectorAll('.play-only-social');
         if (currentPage === 'play.html') {
-            playOnlySocials.forEach(el => el.style.display = 'block');
+            playOnlySocials.forEach(el => {
+                el.style.display = 'block';
+                el.classList.add('social-animate-in');
+                setTimeout(() => el.classList.remove('social-animate-in'), 600);
+            });
         } else {
-            playOnlySocials.forEach(el => el.style.display = 'none');
+            playOnlySocials.forEach(el => {
+                if (el.style.display === 'block') {
+                    el.classList.add('social-animate-out');
+                    setTimeout(() => {
+                        el.style.display = 'none';
+                        el.classList.remove('social-animate-out');
+                    }, 300);
+                } else {
+                    el.style.display = 'none';
+                }
+            });
         }
     }, 50);
 }
