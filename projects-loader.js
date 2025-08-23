@@ -23,7 +23,6 @@ function loadProjects(type) {
                 <div class="project-tags">
                     ${project.skills.slice(0, 4).map(skill => `<span>${skill}</span>`).join('')}
                 </div>
-                <div class="view-project-btn">View Project →</div>
             </div>
         `;
         container.appendChild(projectCard);
@@ -55,7 +54,6 @@ function loadFeaturedProjects() {
                 <div class="project-tags">
                     ${project.skills.slice(0, 3).map(skill => `<span>${skill}</span>`).join('')}
                 </div>
-                <div class="view-project-btn">View Project →</div>
             </div>
         `;
         container.appendChild(projectCard);
