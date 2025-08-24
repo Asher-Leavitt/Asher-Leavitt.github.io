@@ -19,7 +19,7 @@ function loadProjects(type) {
                 </div>
             </div>
             <div class="project-overlay">
-                <p class="project-description">${project.shortDescription}</p>
+                <h3 class="overlay-title">${project.title}</h3>
                 <div class="project-tags">
                     ${project.skills.slice(0, 4).map(skill => `<span>${skill}</span>`).join('')}
                 </div>
@@ -50,7 +50,7 @@ function loadFeaturedProjects() {
                 </div>
             </div>
             <div class="project-overlay">
-                <p class="project-description">${project.shortDescription}</p>
+                <h3 class="overlay-title">${project.title}</h3>
                 <div class="project-tags">
                     ${project.skills.slice(0, 3).map(skill => `<span>${skill}</span>`).join('')}
                 </div>
