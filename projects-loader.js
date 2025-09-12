@@ -5,11 +5,23 @@ function loadProjects(type) {
     if (!container) return;
     
     container.innerHTML = '';
-    const projects = projectsData[type] || [];
+    
+    // Load both professional and personal projects if type is 'all'
+    // Otherwise load specific type
+    let projects = [];
+    if (type === 'all') {
+        // Load professional first, then personal
+        projects = [...(projectsData.professional || []), ...(projectsData.personal || [])];
+    } else {
+        projects = projectsData[type] || [];
+    }
     
     projects.forEach(project => {
+        // Determine project type for URL
+        const projectType = projectsData.professional.includes(project) ? 'professional' : 'personal';
+        
         const projectCard = document.createElement('a');
-        projectCard.href = `project-detail.html?id=${project.id}&type=${type}`;
+        projectCard.href = `project-detail.html?id=${project.id}&type=${projectType}`;
         projectCard.className = 'project-card';
         projectCard.innerHTML = `
             <div class="project-card-content">
@@ -29,18 +41,25 @@ function loadProjects(type) {
     });
 }
 
-// Load featured projects for homepage
+// Load featured projects for homepage - shows 3 total projects
 function loadFeaturedProjects() {
     const container = document.getElementById('featured-projects-container');
     if (!container) return;
     
     container.innerHTML = '';
-    // Get first 3 professional projects as featured
-    const featured = projectsData.professional.slice(0, 3);
+    
+    // Combine professional and personal, with professional first
+    const allProjects = [...(projectsData.professional || []), ...(projectsData.personal || [])];
+    
+    // Take only the first 3 projects (will prioritize professional since they come first)
+    const featured = allProjects.slice(0, 3);
     
     featured.forEach(project => {
+        // Determine project type for URL
+        const projectType = projectsData.professional.includes(project) ? 'professional' : 'personal';
+        
         const projectCard = document.createElement('a');
-        projectCard.href = `project-detail.html?id=${project.id}&type=professional`;
+        projectCard.href = `project-detail.html?id=${project.id}&type=${projectType}`;
         projectCard.className = 'project-card';
         projectCard.innerHTML = `
             <div class="project-card-content">
@@ -67,8 +86,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (currentPage === 'index.html' || currentPage === '') {
         loadFeaturedProjects();
     } else if (currentPage === 'professional.html') {
+        // Load only professional projects on professional page
         loadProjects('professional');
     } else if (currentPage === 'personal.html') {
+        // Load only personal projects on personal page
         loadProjects('personal');
     }
 });
