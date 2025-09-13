@@ -1,4 +1,4 @@
-// project-detail.js - Handles individual project page functionality
+// project-detail.js - Handles individual project page functionality with video support
 
 document.addEventListener('DOMContentLoaded', function() {
     // Get project ID from URL parameters
@@ -21,27 +21,76 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update project title
         document.getElementById('project-title').textContent = project.title;
         
-        // Update main image
-        const mainImage = document.getElementById('main-image');
-        mainImage.src = project.images[0] || project.thumbnail;
-        mainImage.alt = project.title;
+        // Helper function to check if file is a video
+        function isVideoFile(filename) {
+            const videoExtensions = ['.mp4', '.mov', '.avi', '.webm', '.mkv'];
+            return videoExtensions.some(ext => filename.toLowerCase().endsWith(ext));
+        }
         
-        // Create thumbnails
+        // Update main media (image or video)
+        const mainMediaContainer = document.querySelector('.main-image-container');
+        const firstMedia = project.images[0] || project.thumbnail;
+        
+        if (isVideoFile(firstMedia)) {
+            mainMediaContainer.innerHTML = `
+                <video id="main-video" controls>
+                    <source src="${firstMedia}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+        } else {
+            mainMediaContainer.innerHTML = `
+                <img id="main-image" src="${firstMedia}" alt="${project.title}">
+            `;
+        }
+        
+        // Create thumbnails for both images and videos
         const thumbnailContainer = document.getElementById('thumbnail-container');
         thumbnailContainer.innerHTML = '';
-        project.images.forEach((image, index) => {
-            const thumb = document.createElement('img');
-            thumb.src = image;
-            thumb.alt = `${project.title} - Image ${index + 1}`;
-            thumb.className = index === 0 ? 'thumbnail active' : 'thumbnail';
-            thumb.addEventListener('click', function() {
-                // Update main image
-                mainImage.src = image;
-                // Update active thumbnail
-                document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-                thumb.classList.add('active');
-            });
-            thumbnailContainer.appendChild(thumb);
+        project.images.forEach((media, index) => {
+            const isVideo = isVideoFile(media);
+            
+            if (isVideo) {
+                // Create video thumbnail
+                const videoThumb = document.createElement('div');
+                videoThumb.className = index === 0 ? 'video-thumbnail active' : 'video-thumbnail';
+                videoThumb.innerHTML = `
+                    <video muted>
+                        <source src="${media}" type="video/mp4">
+                    </video>
+                    <div class="play-icon">▶</div>
+                `;
+                
+                videoThumb.addEventListener('click', function() {
+                    // Update main media to video
+                    mainMediaContainer.innerHTML = `
+                        <video id="main-video" controls autoplay>
+                            <source src="${media}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    `;
+                    // Update active thumbnail
+                    document.querySelectorAll('.thumbnail, .video-thumbnail').forEach(t => t.classList.remove('active'));
+                    videoThumb.classList.add('active');
+                });
+                thumbnailContainer.appendChild(videoThumb);
+            } else {
+                // Create image thumbnail
+                const imgThumb = document.createElement('img');
+                imgThumb.src = media;
+                imgThumb.alt = `${project.title} - Image ${index + 1}`;
+                imgThumb.className = index === 0 ? 'thumbnail active' : 'thumbnail';
+                imgThumb.addEventListener('click', function() {
+                    // Update main media to image
+                    mainMediaContainer.innerHTML = `
+                        <img id="main-image" src="${media}" alt="${project.title}">
+                    `;
+                    // Update active thumbnail
+                    document.querySelectorAll('.thumbnail, .video-thumbnail').forEach(t => t.classList.remove('active'));
+                    imgThumb.classList.add('active');
+                });
+                thumbnailContainer.appendChild(imgThumb);
+            }
         });
         
         // Update description

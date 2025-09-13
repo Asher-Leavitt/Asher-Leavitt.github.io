@@ -110,7 +110,7 @@ const projectsData = {
 
         {
             id: "MeltyBrain",
-            title: "Wicked Cyclone - Melty Brain Combat Robot",
+            title: "Melty Brain Combat Robot",
             shortDescription: "Built and competed with a combat robot using an advanced control system allowing translation and rotation through high-RPM spinning and precise motor pulsing",
             fullDescription: "When I joined Northeastern University Combat Robotics, the introductory project included designing and building for a 1lb plastic competition. While I could have selected more mainstream robot types, (drum spinner, vertical/horizontal spinner, flipper) I tried for an unconventional robot type – Meltybrain. Building off a horizontal spinner, the whole robot spins at thousands of RPMs. It moves forwards through the intermittent pulsing of the motor every 180° cycle. For my bot I focused on repairability and damage. This means it splits into 5 different pieces – two lids, one weapon, and two motor mounts. The motor mounts and weapon are all clamped down between the two lid pieces. After competing at the spring competition, I learned a few different things. First, my current design is way too large. While they barely fit the weight requirements, structurally, they were terrible. The whole design needs to be shrunk down in order for it to be viable. Second, programming is hard. I tried to use already made open source code to make my meltybrain move. Unfortunately, this code was never fully functioning and It was hard to pinpoint why exactly it wasn’t moving in the right way. I’d love to revisit this project based on what I’ve learned and improve Wicked Cyclone for another 1lb competition. Not only does the design need improvement, but I need more help understanding the software side. Additionally, I’m curious as to what help simulation software such as Ansys could provide for weapon shape. ",
             thumbnail: "images\\Melty\\cpm35 2025-03-08 172244.662.jpg",
@@ -125,10 +125,8 @@ const projectsData = {
                 { title: "Wicked Cyclone 1.0 CAD", url: "https://cad.onshape.com/documents/772dbe5c71ab4f012d701d51/w/a12382010c09e4bf9f2648ca/e/479f2d4a8f67f9d5e8e4ec87?renderMode=0&uiState=68c49bc9063e05775ad0d10d" },
             ],
             details: {
-                "Type": "Beta Configuration",
-                "Displacement": "15 cc",
-                "Operating Speed": "600 RPM",
-                "Materials": "Brass, Steel, Graphite"
+                "Weight Class": "1lb",
+                "Materials": "PLA, ABS"
             }
         },
                 {
@@ -139,9 +137,10 @@ const projectsData = {
             thumbnail: "images\\Voron\\IMG_3987.JPEG",
             images: [
                 "images\\Voron\\IMG_3987.JPEG",
-                "https://placehold.co/800x600",
-                "https://placehold.co/800x600",
-                "https://placehold.co/800x600"
+                "images\\Voron\\IMG_3981.MP4",
+                "images\\Voron\\IMG_3986.JPEG",
+                "images\\Voron\\IMG_3671.MP4",
+                "images\\Voron\\IMG_3988.JPEG",
             ],
             skills: ["Mechanical Design", "G-code", "Firmware Development", "Precision Assembly"],
             links: [
