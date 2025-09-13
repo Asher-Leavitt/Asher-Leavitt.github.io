@@ -129,6 +129,30 @@ const projectsData = {
                 "Materials": "PLA, ABS"
             }
         },
+        {
+            id: "swerve",
+            title: "First Robotics 2024 Swerve Robot",
+            shortDescription: "",
+            fullDescription: "",
+            thumbnail: "images\\Swerve\\IMG_7193.JPEG",
+            images: [
+                "images\\Swerve\\Warrior Robotics (4169) 2024 Reveal_.mp4",
+                "images\\Swerve\\IMG_7193.JPEG",
+                "images\\Swerve\\IMG_8010.JPEG",
+                "images\\Swerve\\IMG_8068.JPEG"
+            ],
+            skills: ["Python", "Onshape", "Electronics and Wiring"],
+            links: [
+                { title: "", url: "#" },
+                { title: "", url: "#" }
+            ],
+            details: {
+                " ": "",
+                "": "",
+                "": "",
+                "": ""
+            }
+        },
                 {
             id: "3d-printer",
             title: "CoreXY 3D Printer",
@@ -153,40 +177,18 @@ const projectsData = {
             }
         },
         {
-            id: "",
-            title: "",
+            id: "marimba",
+            title: "Self Playing Marimba",
             shortDescription: "",
             fullDescription: "",
-            thumbnail: "https://placehold.co/400x250",
+            thumbnail: "images\\Marimba\\Screenshot 2025-09-13 154549.png",
             images: [
-                "https://placehold.co/800x600",
-                "https://placehold.co/800x600",
-                "https://placehold.co/800x600"
+                "https://youtu.be/NWSdK96VE98",
+                "images\\Marimba\\Screenshot 2025-09-13 153905.png",
+                "images\\Marimba\\IMG_6902.MP4",
+                "https://youtu.be/000wigRa1zc"
             ],
-            skills: ["", "", "", "", ""],
-            links: [
-                { title: "", url: "#" },
-                { title: "", url: "#" }
-            ],
-            details: {
-                " ": "",
-                "": "",
-                "": "",
-                "": ""
-            }
-        },
-        {
-            id: "",
-            title: "",
-            shortDescription: "",
-            fullDescription: "",
-            thumbnail: "https://placehold.co/400x250",
-            images: [
-                "https://placehold.co/800x600",
-                "https://placehold.co/800x600",
-                "https://placehold.co/800x600"
-            ],
-            skills: ["", "", "", "", ""],
+            skills: ["Arduino", "Onshape", "Laser Cutting", "Electronics and Wiring"],
             links: [
                 { title: "", url: "#" },
                 { title: "", url: "#" }
