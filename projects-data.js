@@ -157,7 +157,7 @@ const projectsData = {
             id: "3d-printer",
             title: "CoreXY 3D Printer",
             shortDescription: ".",
-            fullDescription: "",
+            fullDescription: "more info to be added!",
             thumbnail: "images\\Voron\\IMG_3987.JPEG",
             images: [
                 "images\\Voron\\IMG_3987.JPEG",
@@ -180,7 +180,7 @@ const projectsData = {
             id: "marimba",
             title: "Self Playing Marimba",
             shortDescription: "",
-            fullDescription: "",
+            fullDescription: "more info to be added!",
             thumbnail: "images\\Marimba\\Screenshot 2025-09-13 154549.png",
             images: [
                 "https://youtu.be/NWSdK96VE98",
@@ -200,29 +200,29 @@ const projectsData = {
                 "": ""
             }
         },
-        {
-            id: "",
-            title: "",
-            shortDescription: "",
-            fullDescription: "",
-            thumbnail: "https://placehold.co/400x250",
-            images: [
-                "https://placehold.co/800x600",
-                "https://placehold.co/800x600",
-                "https://placehold.co/800x600"
-            ],
-            skills: ["", "", "", "", ""],
-            links: [
-                { title: "", url: "#" },
-                { title: "", url: "#" }
-            ],
-            details: {
-                " ": "",
-                "": "",
-                "": "",
-                "": ""
-            }
-        },
+        // {
+        //     id: "",
+        //     title: "",
+        //     shortDescription: "",
+        //     fullDescription: "",
+        //     thumbnail: "https://placehold.co/400x250",
+        //     images: [
+        //         "https://placehold.co/800x600",
+        //         "https://placehold.co/800x600",
+        //         "https://placehold.co/800x600"
+        //     ],
+        //     skills: ["", "", "", "", ""],
+        //     links: [
+        //         { title: "", url: "#" },
+        //         { title: "", url: "#" }
+        //     ],
+        //     details: {
+        //         " ": "",
+        //         "": "",
+        //         "": "",
+        //         "": ""
+        //     }
+        // },
         
     ]
 };
