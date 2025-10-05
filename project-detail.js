@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Update description
-        document.getElementById('project-full-description').textContent = project.fullDescription;
+        document.getElementById('project-full-description').innerHTML = project.fullDescription;
         
         // Update technical details
         const detailsContainer = document.getElementById('project-details');
