@@ -39,9 +39,14 @@ const projectsData = {
             fullDescription: "It is clear that trading cards are one of the biggest industries in games and toys today. Currently, there are only commercial solutions for the sorting and organization of these cards. This open source project aims to create a version, as capable as commercial solutions, without the hefty price tag. This is done through a majority of 3d printed pieces including belts, pulleys, and card rollers. To scan the card, this machine would use already made software, Manabox, for its speed and collection documentation (not affiliated). <br> <br> Additionally, it is designed in such a way that each sorter module can be independently detached from one another. This allows for better repairability and enhanced customizability. The number of piles this machine can sort is only determined by the strength of the motor and not the design itself. \n This design is actually not the first I’ve created. My initial designs include a much less modular solution with larger moving pieces. While I never started the assembly phase for versions 1 or 2, the CAD was developed. The links for it are below. ",
             thumbnail: "images\\CardSorter\\Screenshot 2025-09-06 164749.png",
             images: [
+                "images\\CardSorter\\IMG_6477.mp4",
                 "images\\CardSorter\\Screenshot 2025-09-06 164749.png",
+                "images\\CardSorter\\IMG_6479.JPEG",
                 "images\\CardSorter\\Screenshot 2025-09-06 164910.png",
-                "images\\CardSorter\\Screenshot 2025-09-06 164956.png"
+                "images\\CardSorter\\IMG_4683(1).mp4",
+                "images\\CardSorter\\Screenshot 2025-09-06 164956.png",
+                "images\\CardSorter\\IMG_6481.JPEG",
+
             ],
             skills: ["Onshape", "Arduino", "3D Printing and Slicing", "Prototyping"],
             links: [
