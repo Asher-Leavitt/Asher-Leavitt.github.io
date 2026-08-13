@@ -3,6 +3,37 @@
 const projectsData = {
     professional: [
         {
+            id: "MthdAI",
+            title: "Gelatin Doppler Model",
+            shortDescription: "Designed, manufactured, and molded new representative prostate model for testing of new 3D ultrasound probe features.",
+            fullDescription:"During Spring 2026 I was a Co-op at Method AI. There, we focused on applying 3D ultrasound technology. During my time, we were in the validation step of our prostate probe. Samples for machined parts from our manufacturer were on the way. I had the opportunity to create a model capeable of testing their implementation of Doppler. <br> <br> Doppler is a method of measuring the velocity of a moving object. In this case, we were trying to measure the flow of blood through a vessel. The model I created was a gelatin model with a vessel running through it. The vessel was connected to a pump which would pump water through it at different speeds. The model was designed to be as representative of the human prostate as possible. This included the size and shape of the prostate, as well as the location of the vessel. <br> <br> Designed in SolidWorks and printed out of PLA, I created the negative which the gelatin would be molded into. We went through a multitude of iterations which served different purposes. We started with simpler models which our probe could easily detect and were easier to manufacture. Then we moved on to more complex models which were more representative of the human prostate. TPU negatives were used to create the fluid paths which represented blood vessils. Simple tuning in CAD could dramatically change the fluid path and and flow rate. I am extremely proud of the final model I built. Compared to off the shelf models, not only was this cheaper $4500, but more customizable and significantly faster to make. This model represented both fluid flow and prostate tumors. Throughout the Co-op my model was used to validate the Doppler implementation of the probe. I was able to see my work being used in a real world application and it was extremely rewarding.",
+            thumbnail: "images\\MthdAI\\IMG_8038.jpeg",
+            images: [
+                "images\\MthdAI\\IMG_8038.jpeg",
+                "https://asher-leavitt.github.io/images/MthdAI/Asher Leavitt Work Summary shareable.pptx",
+                "images\\MthdAI\\IMG_8035.jpeg",
+                "images\\MthdAI\\IMG_8177.jpeg",
+                "images\\MthdAI\\IMG_8179.jpeg",
+                "images\\MthdAI\\IMG_8244.jpeg",
+                "images\\MthdAI\\IMG_8247.jpeg",
+
+
+            ],  
+            skills: ["SolidWorks", "3D Printing and Slicing", "Molding and Casting", "Prototyping", "Medical Device Design"],
+            links: [
+                { title: "Work Summary Slideshow", url: "https://asher-leavitt.github.io/images/MthdAI/Asher_Leavitt_Work_Summary.pptx" },
+                { title: "Method AI", url: "https://mthd.ai/" },
+          
+            ],
+            details: {
+                "Duration": "6 months",
+                "Team Size": "10 people",
+                "Industry": "Medical Devices",
+                "Impact": "$4500 cost reduction",
+                "Date": "January - June 2026"
+            }
+        },
+        {
             id: "Eigenbody",
             title: "Modular Robot Center Chassis",
             shortDescription: "Redesigned center body for Carnegie Mellon Biorobotics lab, optimizing for new electrical components and more features.",
@@ -12,21 +43,23 @@ const projectsData = {
                 "images\\Eigenbot\\IMG_1573.jpg",
                 "images\\Eigenbot\\Eigenbody_V3 v7.mp4",   
                 "images\\Eigenbot\\IMG_5936.jpg",
+                "https://docs.google.com/presentation/d/1sMMwU4Ag18J4C3QMTecib-GyM6644tV0Is-Db9VJR8Q/edit",
                 "images\\Eigenbot\\IMG_5919.jpg",
                 "images\\Eigenbot\\FusionCAD.png",
 
             ],  
             skills: ["Fusion", "3D Printing and Slicing", "Fusion Simulation"],
             links: [
-                { title: "Carnegie Mellon Biorobotics Lab", url: "https://biorobotics.org/" },
                 { title: "Center Body Slideshow", url: "https://docs.google.com/presentation/d/1sMMwU4Ag18J4C3QMTecib-GyM6644tV0Is-Db9VJR8Q/edit?usp=sharing" },
+                { title: "Carnegie Mellon Biorobotics Lab", url: "https://biorobotics.org/" },
                 { title: "Eigenbot Project Paper", url: "https://biorobotics.ri.cmu.edu/papers/paperUploads/WasteManagementSymposium2017RobotInspection.pdf" }
             ],
             details: {
                 "Duration": "2 months",
                 "Team Size": "7 people",
                 "Industry": "Biorobotics",
-                "Impact": " 43% surface area reduction "
+                "Impact": " 43% surface area reduction ",
+                "Date": "July - August 2025"
             }
         },
         
@@ -60,7 +93,8 @@ const projectsData = {
                 // "Cost": "45+ minutes",
                 // "Number of Piles": "5 km",
                 "Plastic": "PLA",
-                "Version": "3.0"
+                "Version": "3.0",
+                "Date": "April 2025 – Present"
             }
         },
         {
@@ -85,6 +119,8 @@ const projectsData = {
                 "Min Dimensions": "30in x 30in x 32in",
                 "Scoring": "Notes and chain climb",
                 "Drivebase": "swerve",
+                "Date": "Sep. 2020 – June 2024"
+
             }
         },
 
@@ -106,7 +142,8 @@ const projectsData = {
             ],
             details: {
                 "Weight Class": "1lb",
-                "Materials": "PLA, ABS"
+                "Materials": "PLA, ABS",
+                "Date": "Jan. 2025 – Mar. 2025"
             }
         },
         
@@ -130,6 +167,7 @@ const projectsData = {
             details: {
                 "Max Speed": "250 mm/s",
                 "Material": "ABS",
+                "Date": "December 2024"
             }
         },
         {
@@ -154,7 +192,7 @@ const projectsData = {
             details: {
                 "Number of Notes": "12",
                 "Playable Songs": "5",
-                "Pieces per Note": "",
+                "Date": "July 2023"
             }
         },
         // {
@@ -167,6 +205,9 @@ const projectsData = {
         //         "https://placehold.co/800x600",
         //         "https://placehold.co/800x600",
         //         "https://placehold.co/800x600"
+        //         // images[] also supports video files, YouTube links, .pptx URLs
+        //         // (rendered via Office Online viewer), and other embeddable
+        //         // URLs (e.g. PDFs, Google Slides) as a generic iframe fallback
         //     ],
         //     skills: ["", "", "", "", ""],
         //     links: [

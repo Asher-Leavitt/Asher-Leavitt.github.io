@@ -708,7 +708,8 @@ footer {
 
 /* Video thumbnail styling */
 .video-thumbnail,
-.youtube-thumbnail {
+.youtube-thumbnail,
+.embed-thumbnail {
     width: 70px;
     height: 50px;
     cursor: pointer;
@@ -722,12 +723,14 @@ footer {
 }
 
 .video-thumbnail:hover,
-.youtube-thumbnail:hover {
+.youtube-thumbnail:hover,
+.embed-thumbnail:hover {
     opacity: 0.9;
 }
 
 .video-thumbnail.active,
-.youtube-thumbnail.active {
+.youtube-thumbnail.active,
+.embed-thumbnail.active {
     opacity: 1;
     border-color: var(--primary);
 }
@@ -744,8 +747,16 @@ footer {
     object-fit: cover;
 }
 
+.embed-thumbnail iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+}
+
 .video-thumbnail .play-icon,
-.youtube-thumbnail .play-icon {
+.youtube-thumbnail .play-icon,
+.embed-thumbnail .play-icon {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -766,6 +777,10 @@ footer {
     background-color: rgba(255, 0, 0, 0.8);
 }
 
+.embed-thumbnail .play-icon.embed-play {
+    background-color: rgba(0, 102, 204, 0.8);
+}
+
 .video-thumbnail:hover .play-icon {
     background-color: var(--primary);
 }
@@ -774,16 +789,22 @@ footer {
     background-color: #ff0000;
 }
 
+.embed-thumbnail:hover .play-icon.embed-play {
+    background-color: #0066cc;
+}
+
 /* Responsive video adjustments */
 @media (max-width: 768px) {
     .video-thumbnail,
-    .youtube-thumbnail {
+    .youtube-thumbnail,
+    .embed-thumbnail {
         width: 60px;
         height: 40px;
     }
-    
+
     .video-thumbnail .play-icon,
-    .youtube-thumbnail .play-icon {
+    .youtube-thumbnail .play-icon,
+    .embed-thumbnail .play-icon {
         width: 16px;
         height: 16px;
         font-size: 10px;

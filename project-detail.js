@@ -11,6 +11,36 @@ function isYouTubeLink(url) {
     return url.includes('youtube.com/watch') || url.includes('youtu.be/') || url.includes('youtube.com/embed/');
 }
 
+// Helper function to check if file is a PowerPoint presentation
+function isPresentationFile(filename) {
+    const presentationExtensions = ['.ppt', '.pptx'];
+    return presentationExtensions.some(ext => filename.toLowerCase().endsWith(ext));
+}
+
+// Helper function to build an Office Online embed URL for a PowerPoint file
+// Note: requires a publicly reachable https:// URL, not a local relative path
+function getOfficeEmbedUrl(url) {
+    return `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(url)}`;
+}
+
+// Helper function to check if file is a recognized image type
+function isImageFile(filename) {
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.bmp'];
+    return imageExtensions.some(ext => filename.toLowerCase().endsWith(ext));
+}
+
+// Helper function to check if URL is a Google Slides presentation
+function isGoogleSlidesLink(url) {
+    return url.includes('docs.google.com/presentation/');
+}
+
+// Helper function to convert a Google Slides URL into a click-through presentation embed
+function getGoogleSlidesEmbedUrl(url) {
+    const match = url.match(/\/presentation\/d\/([a-zA-Z0-9_-]+)/);
+    const presentationId = match ? match[1] : '';
+    return `https://docs.google.com/presentation/d/${presentationId}/embed?start=false&loop=false&delayms=3000`;
+}
+
 // Helper function to convert YouTube URL to embed URL
 function getYouTubeEmbedUrl(url) {
     let videoId = '';
@@ -111,9 +141,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     Your browser does not support the video tag.
                 </video>
             `;
-        } else {
+        } else if (isPresentationFile(firstMedia)) {
+            mainMediaContainer.innerHTML = `
+                <iframe id="main-embed" src="${getOfficeEmbedUrl(firstMedia)}" frameborder="0"></iframe>
+            `;
+        } else if (isGoogleSlidesLink(firstMedia)) {
+            mainMediaContainer.innerHTML = `
+                <iframe id="main-embed" src="${getGoogleSlidesEmbedUrl(firstMedia)}" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            `;
+        } else if (isImageFile(firstMedia)) {
             mainMediaContainer.innerHTML = `
                 <img id="main-image" src="${firstMedia}" alt="${project.title}">
+            `;
+        } else {
+            mainMediaContainer.innerHTML = `
+                <iframe id="main-embed" src="${firstMedia}" frameborder="0"></iframe>
             `;
         }
         
@@ -123,7 +165,10 @@ document.addEventListener('DOMContentLoaded', function() {
         project.images.forEach((media, index) => {
             const isVideo = isVideoFile(media);
             const isYouTube = isYouTubeLink(media);
-            
+            const isPresentation = isPresentationFile(media);
+            const isGoogleSlides = isGoogleSlidesLink(media);
+            const isImage = isImageFile(media);
+
             if (isYouTube) {
                 // Create YouTube thumbnail
                 const youtubeThumb = document.createElement('div');
@@ -146,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </iframe>
                     `;
                     // Update active thumbnail
-                    document.querySelectorAll('.thumbnail, .video-thumbnail, .youtube-thumbnail').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.thumbnail, .video-thumbnail, .youtube-thumbnail, .embed-thumbnail').forEach(t => t.classList.remove('active'));
                     youtubeThumb.classList.add('active');
                 });
                 thumbnailContainer.appendChild(youtubeThumb);
@@ -170,11 +215,51 @@ document.addEventListener('DOMContentLoaded', function() {
                         </video>
                     `;
                     // Update active thumbnail
-                    document.querySelectorAll('.thumbnail, .video-thumbnail, .youtube-thumbnail').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.thumbnail, .video-thumbnail, .youtube-thumbnail, .embed-thumbnail').forEach(t => t.classList.remove('active'));
                     videoThumb.classList.add('active');
                 });
                 thumbnailContainer.appendChild(videoThumb);
-            } else {
+            } else if (isPresentation) {
+                // Create presentation (PowerPoint) thumbnail with a live embed preview
+                const embedUrl = getOfficeEmbedUrl(media);
+                const presentationThumb = document.createElement('div');
+                presentationThumb.className = index === 0 ? 'embed-thumbnail active' : 'embed-thumbnail';
+                presentationThumb.innerHTML = `
+                    <iframe src="${embedUrl}" frameborder="0"></iframe>
+                    <div class="play-icon embed-play">▤</div>
+                `;
+
+                presentationThumb.addEventListener('click', function() {
+                    // Update main media to presentation embed
+                    mainMediaContainer.innerHTML = `
+                        <iframe id="main-embed" src="${embedUrl}" frameborder="0"></iframe>
+                    `;
+                    // Update active thumbnail
+                    document.querySelectorAll('.thumbnail, .video-thumbnail, .youtube-thumbnail, .embed-thumbnail').forEach(t => t.classList.remove('active'));
+                    presentationThumb.classList.add('active');
+                });
+                thumbnailContainer.appendChild(presentationThumb);
+            } else if (isGoogleSlides) {
+                // Create Google Slides thumbnail with a live click-through preview
+                const embedUrl = getGoogleSlidesEmbedUrl(media);
+                const slidesThumb = document.createElement('div');
+                slidesThumb.className = index === 0 ? 'embed-thumbnail active' : 'embed-thumbnail';
+                slidesThumb.innerHTML = `
+                    <iframe src="${embedUrl}" frameborder="0"></iframe>
+                    <div class="play-icon embed-play">▤</div>
+                `;
+
+                slidesThumb.addEventListener('click', function() {
+                    // Update main media to Google Slides embed
+                    mainMediaContainer.innerHTML = `
+                        <iframe id="main-embed" src="${embedUrl}" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                    `;
+                    // Update active thumbnail
+                    document.querySelectorAll('.thumbnail, .video-thumbnail, .youtube-thumbnail, .embed-thumbnail').forEach(t => t.classList.remove('active'));
+                    slidesThumb.classList.add('active');
+                });
+                thumbnailContainer.appendChild(slidesThumb);
+            } else if (isImage) {
                 // Create image thumbnail
                 const imgThumb = document.createElement('img');
                 imgThumb.src = media;
@@ -186,10 +271,29 @@ document.addEventListener('DOMContentLoaded', function() {
                         <img id="main-image" src="${media}" alt="${project.title}">
                     `;
                     // Update active thumbnail
-                    document.querySelectorAll('.thumbnail, .video-thumbnail, .youtube-thumbnail').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.thumbnail, .video-thumbnail, .youtube-thumbnail, .embed-thumbnail').forEach(t => t.classList.remove('active'));
                     imgThumb.classList.add('active');
                 });
                 thumbnailContainer.appendChild(imgThumb);
+            } else {
+                // Create generic embed thumbnail (e.g. PDFs or other embeddable URLs)
+                const embedThumb = document.createElement('div');
+                embedThumb.className = index === 0 ? 'embed-thumbnail active' : 'embed-thumbnail';
+                embedThumb.innerHTML = `
+                    <iframe src="${media}" frameborder="0"></iframe>
+                    <div class="play-icon embed-play">▤</div>
+                `;
+
+                embedThumb.addEventListener('click', function() {
+                    // Update main media to generic embed
+                    mainMediaContainer.innerHTML = `
+                        <iframe id="main-embed" src="${media}" frameborder="0"></iframe>
+                    `;
+                    // Update active thumbnail
+                    document.querySelectorAll('.thumbnail, .video-thumbnail, .youtube-thumbnail, .embed-thumbnail').forEach(t => t.classList.remove('active'));
+                    embedThumb.classList.add('active');
+                });
+                thumbnailContainer.appendChild(embedThumb);
             }
         });
         
