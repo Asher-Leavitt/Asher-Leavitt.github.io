@@ -10,7 +10,7 @@ const projectsData = {
             thumbnail: "images\\MthdAI\\IMG_8038.jpeg",
             images: [
                 "images\\MthdAI\\IMG_8038.jpeg",
-                "https://asher-leavitt.github.io/images/MthdAI/Asher Leavitt Work Summary shareable.pptx",
+                "https://asher-leavitt.github.io/images/MthdAI/Asher_Leavitt_Work_Summary.pptx",
                 "images\\MthdAI\\IMG_8035.jpeg",
                 "images\\MthdAI\\IMG_8177.jpeg",
                 "images\\MthdAI\\IMG_8179.jpeg",
@@ -123,7 +123,6 @@ const projectsData = {
 
             }
         },
-
         {
             id: "MeltyBrain",
             title: "Melty Brain Combat Robot",
@@ -147,7 +146,7 @@ const projectsData = {
             }
         },
         
-                {
+        {
             id: "3d-printer",
             title: "CoreXY 3D Printer",
             shortDescription: ".",
@@ -193,6 +192,28 @@ const projectsData = {
                 "Number of Notes": "12",
                 "Playable Songs": "5",
                 "Date": "July 2023"
+            }
+        },
+                {
+            id: "PC",
+            title: "Custom PC Build",
+            shortDescription: "A custom PC build for gaming and productivity, focusing on high performance at cost.",
+            fullDescription: "This project involved planning and assembling a custom PC build that balances productivity needs with gaming performance. The build was focused on selecting components that provide high performance while staying within a reasonable budget ($1500). This project not only enhanced my understanding of computer hardware but also improved my skills in troubleshooting, optimization and linux.",
+            thumbnail: "images\\CustomPC\\IMG_9662.jpeg",
+            images: [
+                "images\\CustomPC\\0001-1330.mp4",
+                "images\\CustomPC\\IMG_1540.jpeg",
+                "images\\CustomPC\\IMG_7987.jpeg",
+                "images\\CustomPC\\IMG_9662.jpeg",
+            ],
+            skills: ["Planning", "Optimization", "Research", "Electronics and Wiring"],
+            links: [
+                { title: "PC Bill Of Materials ", url: "https://docs.google.com/spreadsheets/d/1wM0qn0JyHWZ2AaZD7nV38IYUap9aJe4A8tTIpY7wuP0/edit?usp=sharing" },
+            ],
+            details: {
+                "Planning Time": "2 weeks",
+                "Price": "$1,200",
+                "Date": "May 2026"
             }
         },
         // {
